@@ -1,0 +1,26 @@
+<yandex>
+   <remote_servers>
+        <two_shards_two_replica>
+            <shard>
+                <replica>
+                    <host>sh1r1</host>
+                    <port>9000</port>
+                </replica>
+                <!-- <replica>
+                    <host>sh1r2</host>
+                    <port>9000</port>
+                </replica> -->
+            </shard>
+            <!-- <shard>
+                <replica>
+                    <host>sh2r1</host>
+                    <port>9000</port>
+                </replica>
+                <replica>
+                    <host>sh2r2</host>
+                    <port>9000</port>
+                </replica>
+            </shard> -->
+        </two_shards_two_replica>
+    </remote_servers>
+</yandex>
