@@ -31,3 +31,9 @@ clickhouse-client --query "CREATE DATABASE IF NOT EXISTS test"
 # create admin user
 clickhouse-client --query="CREATE USER admin IDENTIFIED WITH SHA256_PASSWORD BY '12345'"
 clickhouse-client --query="SET allow_introspection_functions=1;GRANT ALL ON *.* TO admin WITH GRANT OPTION" --multiquery
+
+# create local db
+clickhouse-client --database=test --query="$(cat /vagrant/scripts/create_table_hits_local.sql)" --multiline
+
+# create distributed view
+clickhouse-client --database=test --query="$(cat /vagrant/scripts/create_distributed_hits.sql)" --multiline

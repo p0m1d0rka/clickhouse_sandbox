@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   
 
   config.vm.provider "virtualbox" do |vb| 
-    vb.memory = "2048"
+    vb.memory = "21024"
     # vb.linked_clone = true
   end
 
@@ -21,8 +21,27 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "sh1r1", primary: true do |sh1r1|
     sh1r1.vm.network "forwarded_port", guest: 8123, host: 8123
+    sh1r1.vm.network "private_network", ip: "192.168.50.11"
     sh1r1.vm.provision :shell, path: "bootstrap_centos.sh"
     sh1r1.vm.hostname = "sh1r1"
+  end
+
+  config.vm.define "sh1r2" do |s|
+    s.vm.provision :shell, path: "bootstrap_centos.sh"
+    s.vm.network "private_network", ip: "192.168.50.12"
+    s.vm.hostname = "sh1r2"
+  end
+
+  config.vm.define "sh2r1" do |s|
+    s.vm.provision :shell, path: "bootstrap_centos.sh"
+    s.vm.network "private_network", ip: "192.168.50.21"
+    s.vm.hostname = "sh2r1"
+  end
+
+  config.vm.define "sh2r2" do |s|
+    s.vm.provision :shell, path: "bootstrap_centos.sh"
+    s.vm.network "private_network", ip: "192.168.50.22"
+    s.vm.hostname = "sh2r2"
   end
 
   # config.vm.define "clear" do |db|
